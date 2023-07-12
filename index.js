@@ -1,32 +1,104 @@
-const express=require('express');
+const express = require("express");
+require("./db");
+const postModel = require("./models/post");
 
-const mongoose=require('mongoose');
+const app = express();
 
-const app=express();
+app.use(express.json());
 
-
-mongoose.connect('mongodb://localhost:27017/practise');
-
-const db=mongoose.connection
-
-// Event handlers for Mongoose connection events
-db.on('connected', () => {
-    console.log('Connected to MongoDB');
+app.post("/", async (req, res) => {
+  const { title, description, tags } = req.body;
+  const results = await postModel.create({
+    title: title,
+    description: description,
+    tags: tags,
   });
-  
-  db.on('error', (error) => {
-    console.error('Error connecting to MongoDB:', error);
+  res.status(200).json(results);
+});
+
+app.get("/", async (req, res) => {
+  let {
+    page = 1,
+    limit = 10,
+    sortField = "createdAt",
+    order = "desc",
+    search = "",
+  } = req.query;
+  let sortOrder = order == "asc" ? 1 : -1;
+  let skip = (+page - 1) * +limit;
+  limit = +limit;
+
+  const results =
+    (
+      await postModel.aggregate([
+        {
+          $match: {
+            title: {
+              $regex: search,
+              $options: "i",
+            },
+          },
+        },
+        {
+          $facet: {
+            totalPages: [
+              { $count: "total" },
+
+              {
+                $project: {
+                  totalPages: {
+                    $ceil: {
+                      $divide: ["$total", limit],
+                    },
+                  },
+                },
+              },
+            ],
+            totalRecords: [
+              {
+                $count: "totalRecords",
+              },
+            ],
+            data: [
+              {
+                $sort: {
+                  [sortField]: +sortOrder,
+                },
+              },
+              {
+                $skip: skip,
+              },
+              {
+                $limit: limit,
+              },
+            ],
+          },
+        },
+        {
+          $set: {
+            totalPages: {
+              $arrayElemAt: ["$totalPages", 0],
+            },
+            totalRecords: {
+              $arrayElemAt: ["$totalRecords", 0],
+            },
+          },
+        },
+        {
+          $set: {
+            totalPages: "$totalPages.totalPages",
+            totalRecords: "$totalRecords.totalRecords",
+          },
+        },
+      ])
+    )[0] ?? [];
+  res.status(200).json({
+    ...results,
+    page,
+    limit,
   });
-  
-  db.on('disconnected', () => {
-    console.log('Disconnected from MongoDB');
-  });
+});
 
-app.get('/',(req,res)=>{
-    res.send('ok')
-})
-
-
-app.listen(4000,()=>{
-    console.log('server is started at 4000')
-})
+app.listen(4000, () => {
+  console.log("server is started at 4000");
+});
