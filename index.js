@@ -1,20 +1,11 @@
 const express = require("express");
 require("./db");
-const postModel = require("./models/post");
-
+const PostRoutes = require("./router");
 const app = express();
 
 app.use(express.json());
 
-app.post("/", async (req, res) => {
-  const { title, description, tags } = req.body;
-  const results = await postModel.create({
-    title: title,
-    description: description,
-    tags: tags,
-  });
-  res.status(200).json(results);
-});
+app.use(PostRoutes);
 
 app.get("/", async (req, res) => {
   let {
