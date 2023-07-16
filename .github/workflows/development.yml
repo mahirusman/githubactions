@@ -19,12 +19,15 @@ jobs:
         run: cd ~/project/githubactions/
 
       - name: pwd
+        working-directory: ~/project/githubactions/
         run: pwd
 
       - name: Fetch latest changes
+        working-directory: ~/project/githubactions/
         run: git pull origin dev
 
       - name: Install dependencies
+        working-directory: ~/project/githubactions/
         run: npm ci
 
       - name: Restart the server
