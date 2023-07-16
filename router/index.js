@@ -11,7 +11,9 @@ const router = express.Router();
 
 router.post("/", createRecord);
 router.get("/", (req, res) => {
-  res.send(`<h1>Working dev Env</h1>`);
+  res.send(200).json({
+    message: "this is our",
+  });
 });
 router.get("/", getRecordsList);
 router.get("/find", getRecordsFindList);
