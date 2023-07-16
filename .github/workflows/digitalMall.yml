@@ -11,8 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build the docker_compose
-        run: whoami
+      - name: Go to dir
+        run: /home/ubuntu/project/githubactions
 
-      - name: Buid the application
-        run: pwd
+      - name: make pull
+        run: git pull
+
+      - name: restart the server
+        run: pm2 restart index.js
