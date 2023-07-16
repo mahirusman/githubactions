@@ -15,9 +15,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Switch Branch
-        run: git checkout master
-
       - name: Fetch latest changes
         run: git pull origin master
 
