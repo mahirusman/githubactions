@@ -1,4 +1,4 @@
-name: CI/CD counter app for production
+name: CI/CD counter app for development
 
 on:
   push:
@@ -7,10 +7,16 @@ on:
 jobs:
   build:
     runs-on: self-hosted
+    defaults:
+      run:
+        working-directory: /home/ubuntu/project/githubactions
 
     steps:
-      - name: Move to Repo
-        run: cd ~/project/githubactions/
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Switch Branch
+        run: git checkout master
 
       - name: Fetch latest changes
         run: git pull origin master
