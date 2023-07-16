@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Go to dir
-        run: /home/ubuntu/project/githubactions
+        run: cd /home/ubuntu/project/githubactions
 
       - name: make pull
         run: git pull
