@@ -1,0 +1,22 @@
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Move to Repo
+        uses: cd /home/ubuntu/project/githubactions
+
+      - name: Run workflow based on environment
+        if: ${{ contains(github.event.ref, 'master') }}
+        uses: ./.github/workflows/production.yml
+
+      - name: Run workflow based on environment
+        if: ${{ contains(github.event.ref, 'dev') }}
+        uses: ./.github/workflows/development.yml
