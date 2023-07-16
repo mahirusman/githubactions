@@ -13,11 +13,12 @@ router.post("/", createRecord);
 
 router.get("/", (req, res) => {
   return res.status(200).json({
-    Hi: "hell from Dev environment",
-    server: `this app is using aws EC2 ubuntu server`,
+    Hi: "hell from Dev environment 👋",
+    server: `this app is using aws EC2 ubuntu server 🌟`,
     Nginx: `using Nginx for revers proxy instead of Apache`,
     SSL: "using free version of SSL certbot",
-    CICD: "using gitHUb Actions for CI/CD on self hosted container",
+    CICD: "using gitHUb Actions for CI/CD on self hosted container 🚀",
+    note: "Take Clone from https://github.com/mahirusman/githubactions make change push you can see changes on dev.mernusman.com",
   });
 });
 // router.get("/", getRecordsList);
