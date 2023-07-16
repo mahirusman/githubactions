@@ -10,4 +10,3 @@ app.use(PostRoutes);
 app.listen(4000, () => {
   console.log("server is started at 4000");
 });
-//
