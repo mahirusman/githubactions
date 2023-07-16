@@ -15,7 +15,7 @@ jobs:
         run: cd /home/ubuntu/project/githubactions
 
       - name: make pull
-        run: git pull
+        run: git pull origin master
 
       - name: restart the server
-        run: pm2 restart index.js
+        run: pm2 restart 0
