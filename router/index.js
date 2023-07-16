@@ -10,6 +10,9 @@ const {
 const router = express.Router();
 
 router.post("/", createRecord);
+router.get("/", (req, res) => {
+  res.send("ok");
+});
 
 router.get("/", getRecordsList);
 router.get("/find", getRecordsFindList);
