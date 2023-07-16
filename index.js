@@ -7,6 +7,8 @@ app.use(express.json());
 
 app.use(PostRoutes);
 
-app.listen(4000, () => {
-  console.log("server is started at 4000");
+const PORT = process.env.NODE_ENV == "production" ? 4000 : 3000;
+
+app.listen(PORT, () => {
+  console.log(`server is started at ${PORT}`);
 });

@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "my-nodejs-app",
-      script: "app.js", // Replace 'app.js' with the entry point of your application
+      script: "index.js", // Replace 'app.js' with the entry point of your application
       instances: "max", // You can specify the number of instances you want to run
       autorestart: true,
       watch: false,
