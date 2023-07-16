@@ -31,4 +31,4 @@ jobs:
         run: npm ci
 
       - name: Restart the server
-        run: pm2 start index.js --env NODE_ENV=development --name development
+        run: pm2 restart index.js --env NODE_ENV=development --name development
