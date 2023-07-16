@@ -25,4 +25,4 @@ jobs:
         run: npm ci
 
       - name: Restart the server
-        run: pm2 restart ecosystem.config.master.js
+        run: pm2 restart index.js --update-env --env NODE_ENV=production
