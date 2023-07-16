@@ -27,8 +27,5 @@ jobs:
       - name: check node version
         run: npm -v
 
-      - name: Install dependencies
-        run: npm ci
-
       - name: Restart the server
         run: npm run start:dev

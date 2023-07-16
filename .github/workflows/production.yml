@@ -21,8 +21,5 @@ jobs:
       - name: Fetch latest changes
         run: git pull origin master
 
-      - name: Install dependencies
-        run: npm ci
-
       - name: Restart the server
         run: npm run start:prod
