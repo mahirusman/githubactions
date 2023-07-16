@@ -10,9 +10,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Move to Repo
-        run: cd /home/ubuntu/project/githubactions
-
       - name: Run workflow based on environment
         if: ${{ contains(github.event.ref, 'master') }}
         uses: ./.github/workflows/production.yml
