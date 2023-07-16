@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "ENV_VAR=dev nodemon index.js",
-    "start:prod": "ENV_VAR=prod nodemon index.js"
+    "start:dev": "cross-env NODE_ENV=dev pm2 deploy ecosystem.config.js",
+    "start:prod": "ENV_VAR=prod pm2 deploy ecosystem.config.js"
   },
   "keywords": [],
   "author": "",
