@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Move to Repo
-        uses: cd /home/ubuntu/project/githubactions
+        run: cd /home/ubuntu/project/githubactions
 
       - name: Run workflow based on environment
         if: ${{ contains(github.event.ref, 'master') }}
