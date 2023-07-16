@@ -11,24 +11,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          ref: dev
-          path: ~/project/githubactions/
 
       - name: Move to Repo
         run: cd ~/project/githubactions/
 
       - name: pwd
-        working-directory: ~/project/githubactions/
         run: pwd
 
       - name: Fetch latest changes
-        working-directory: ~/project/githubactions/
         run: git pull origin dev
 
       - name: Install dependencies
-        working-directory: ~/project/githubactions/
         run: npm ci
+        working-directory: ~/project/githubactions/
 
       - name: Restart the server
         run: pm2 start ecosystem.config.js --env development
+        working-directory: ~/project/githubactions/
