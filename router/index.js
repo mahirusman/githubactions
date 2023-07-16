@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/", createRecord);
 router.get("/", (req, res) => {
-  res.send("ok12");
+  res.send("herewego");
 });
 
 router.get("/", getRecordsList);
