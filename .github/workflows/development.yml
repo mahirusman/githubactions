@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          ref: dev
+          path: ~/project/githubactions/
 
       - name: Move to Repo
         run: cd ~/project/githubactions/
