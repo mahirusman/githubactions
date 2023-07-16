@@ -13,7 +13,7 @@ router.post("/", createRecord);
 
 router.get("/", (req, res) => {
   return res.status(200).json({
-    Hi: "Hell from Dev environment 👋",
+    Hi: `Hell from ${process.env.NODE_ENV} environment 👋`,
     server: `This app running on aws EC2 ubuntu server 🌟`,
     Nginx: `Nginx for revers proxy instead of Apache`,
     SSL: "Using free version of SSL certbot",
