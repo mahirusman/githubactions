@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Move to Repo
-        run: cd /home/ubuntu/project/githubactions
+        run: cd ~/project/githubactions/
 
       - name: Fetch latest changes
         run: git pull origin master
