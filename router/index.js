@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
     Nginx: `Nginx for revers proxy instead of Apache`,
     SSL: "Using free version of SSL certbot",
     CICD: "Using gitHUb Actions for CI/CD on self hosted container 🚀",
-    note: "Take Clone from https://github.com/mahirusman/githubactions make change push you can see changes on dev.mernusman.com",
+    note: "Take Clone from https://github.com/mahirusman/githubactions make change push you can see changes on mernusman.com",
   });
 });
 // router.get("/", getRecordsList);
