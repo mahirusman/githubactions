@@ -9,6 +9,6 @@ app.use(PostRoutes);
 
 console.log(process.env.ENV_VAR);
 
-app.listen(4000, () => {
-  console.log(`server is started at ${4000}`);
+app.listen(3000, () => {
+  console.log(`server is started at ${3000}`);
 });
