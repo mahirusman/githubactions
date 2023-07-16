@@ -7,6 +7,10 @@ app.use(express.json());
 
 app.use(PostRoutes);
 
-app.listen(4000, () => {
-  console.log("server is started at 4000");
+console.log(process.env.ENV_VAR);
+
+const Environemnt = process.env.ENV_VAR == "dev" ? 3000 : 4000;
+
+app.listen(Environemnt, () => {
+  console.log(`server is started at ${Environemnt}`);
 });

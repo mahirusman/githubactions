@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start:dev": "ENV_VAR=dev nodemon index.js",
+    "start:prod": "ENV_VAR=prod nodemon index.js"
   },
   "keywords": [],
   "author": "",
