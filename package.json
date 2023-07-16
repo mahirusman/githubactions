@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "ENV_VAR=dev nodemon index.js",
-    "start:prod": "ENV_VAR=prod nodemon index.js"
+    "start:dev": "cross-env NODE_ENV=dev pm2 start ecosystem.config.js",
+    "start:prod": "ENV_VAR=prod pm2 start ecosystem.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cross-env": "^7.0.3",
     "express": "^4.18.2",
     "mongoose": "^7.3.2"
   }
