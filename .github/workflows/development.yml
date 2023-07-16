@@ -15,11 +15,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Move to Repo
-        run: cd ~/project/githubactions/
-
       - name: pwd
         run: pwd
+
+      - name: Switch Branch
+        run: git checkout dev
 
       - name: Fetch latest changes
         run: git pull origin dev
