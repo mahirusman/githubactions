@@ -24,9 +24,6 @@ jobs:
       - name: Fetch latest changes
         run: git pull origin dev
 
-      - name: check node version
-        run: npm -v
-
       - name: Install dependencies
         run: npm ci
 
