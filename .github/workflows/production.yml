@@ -12,8 +12,8 @@ jobs:
         working-directory: /home/ubuntu/production_code/githubactions
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: pwd
+        uses: pwd
 
       - name: Fetch latest changes
         run: git pull origin master
