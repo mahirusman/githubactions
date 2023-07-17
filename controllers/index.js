@@ -1,4 +1,5 @@
 const postModel = require("../models/post");
+const UserModel = require("../models/user");
 
 const getRecordsList = async (req, res) => {
   let {
@@ -70,11 +71,12 @@ const getRecordsFindList = async (req, res) => {
 };
 
 const createRecord = async (req, res) => {
-  const { title, description, tags } = req.body;
+  const { title, description, tags, user } = req.body;
   const results = await postModel.create({
     title: title,
     description: description,
     tags: tags,
+    user,
   });
 
   console.log("results", results);
@@ -109,10 +111,25 @@ const deletePost = async (req, res) => {
   }
 };
 
+const createUser = async (req, res) => {
+  try {
+    const { name, address } = req.body;
+    let results = await UserModel.create({
+      name,
+      address,
+    });
+
+    res.status(200).json(results);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   createRecord,
   updateRecord,
   deletePost,
   getRecordsList,
   getRecordsFindList,
+  createUser,
 };

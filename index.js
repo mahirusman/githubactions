@@ -1,5 +1,5 @@
 const express = require("express");
-// require("./db");
+require("./db");
 const PostRoutes = require("./router");
 const app = express();
 

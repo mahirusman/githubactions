@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "cross-env NODE_ENV=dev pm2 start ecosystem.config.js",
+    "start:local": "cross-env NODE_ENV=dev nodemon index.js",
     "start:prod": "cross-env NODE_ENV=prod pm2 start ecosystem.config.js"
   },
   "keywords": [],
