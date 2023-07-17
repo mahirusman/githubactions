@@ -3,7 +3,6 @@ const {
   createRecord,
   updateRecord,
   deletePost,
-  getRecordsList,
   getRecordsFindList,
   createUser,
   helloWorld,
