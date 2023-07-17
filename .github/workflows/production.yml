@@ -12,14 +12,11 @@ jobs:
         working-directory: /home/ubuntu/production_code/githubactions
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Switch Branch
-        run: git checkout master
+      - name: pwd
+        run: pwd
 
       - name: Fetch latest changes
-        run: git pull origin master
+        run: git pull
 
       - name: Restart the server
         run: npm run start:prod

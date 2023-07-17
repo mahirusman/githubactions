@@ -15,17 +15,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: pwd
-        run: pwd
-
-      - name: Switch Branch
-        run: git checkout dev
-
       - name: Fetch latest changes
-        run: git pull origin dev
-
-      - name: check node version
-        run: npm -v
+        run: git pull
 
       - name: Restart the server
         run: npm run start:dev
