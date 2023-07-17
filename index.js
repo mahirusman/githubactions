@@ -1,12 +1,22 @@
 const express = require("express");
-require("./db");
-const PostRoutes = require("./router");
+const PostRoutes = require("./router/post");
 const app = express();
+require("./db");
 
 app.use(express.json());
 
 app.use(PostRoutes);
 
+app.use(function (err, req, res, next) {
+  res.status(err.status || 500);
+  res.json({ error: err });
+});
+
+app.use("*", (req, res, next) => {
+  return res
+    .status(400)
+    .json({ notfound: `endpoint ${req.originalUrl} is not available` });
+});
 
 const PORT = process.env.NODE_ENV == "prod" ? 4000 : 3000;
 
