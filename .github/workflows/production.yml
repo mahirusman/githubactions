@@ -16,7 +16,7 @@ jobs:
         run: pwd
 
       - name: Fetch latest changes
-        run: git pull origin master
+        run: git pull
 
       - name: Restart the server
         run: npm run start:prod
