@@ -16,6 +16,13 @@ const postSchema = new Schema(
       type: String,
     },
     tags: [String],
+    userData: [
+      {
+        name: { type: String },
+        age: { type: Number },
+        gender: { type: String },
+      },
+    ],
   },
   {
     timestamps: true,
