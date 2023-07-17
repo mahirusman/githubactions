@@ -1,6 +1,7 @@
+const mongoose = require("mongoose");
 const postModel = require("../models/post");
 const UserModel = require("../models/user");
-
+const ObjectId = mongoose.Types.ObjectId;
 const getRecordsList = async (req, res) => {
   let {
     page = 1,
@@ -42,7 +43,43 @@ const getRecordsFindList = async (req, res) => {
   }
 
   const pipeline = [
-    { $match: query },
+    // { $match: query },
+    // {
+    //   $match: {
+    //     _id: new ObjectId("64b4edaeaf047cfc85de96dc"),
+    //   },
+    // },
+    {
+      $lookup: {
+        from: "users",
+        let: { userId: "$user" },
+        pipeline: [
+          {
+            $match: {
+              $expr: {
+                $eq: ["$_id", "$$userId"],
+              },
+            },
+          },
+        ],
+        as: "creator",
+      },
+    },
+    {
+      $set: {
+        hasAnyCreator: {
+          $size: "$creator",
+        },
+      },
+    },
+    // {
+    //   $match: {
+    //     $expr: {
+    //       $gt: [{ $size: "$creator" }, 0],
+    //     },
+    //   },
+    // },
+
     {
       $facet: {
         data: [
@@ -59,7 +96,7 @@ const getRecordsFindList = async (req, res) => {
 
   const results = result?.data;
   const totalCount = result.totalCount[0] ? result.totalCount[0].count : 0;
-  const totalPages = totalCount / limit;
+  const totalPages = Math.ceil(totalCount / limit);
   res.status(200).json({
     results,
     page,

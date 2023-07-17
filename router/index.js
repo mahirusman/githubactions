@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
     note: "Take Clone from https://github.com/mahirusman/githubactions make change push code and see live changes on dev.mernusman.com",
   });
 });
-// router.get("/", getRecordsList);
+router.get("/get", getRecordsList);
 router.get("/find", getRecordsFindList);
 
 router.put("/:id", updateRecord);
